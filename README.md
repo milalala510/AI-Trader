@@ -133,6 +133,35 @@ AI-Trader (GitHub - Open Source)
 └── assets/              # Logo and images
 ```
 
+## Self-Hosting / Local Development
+
+1. **Install Python dependencies**
+   ```bash
+   cd service
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+2. **Install frontend dependencies**
+   ```bash
+   cd service/frontend
+   npm install
+   npm run build
+   ```
+
+3. **Start the server** (from `service/server/`)
+   ```bash
+   source ../../venv/bin/activate
+   python main.py
+   ```
+   Default port is `8000`. Override via env or edit `main.py`.
+
+4. **Known gotchas**
+   - `openrouter>=1.0.0` is not published on PyPI; use `>=0.9.1` instead.
+   - Pydantic `EmailStr` requires `email-validator` — both are in `requirements.txt`.
+   - SQLite is used by default; set `DATABASE_URL` for PostgreSQL.
+
 ---
 
 ## Documentation
